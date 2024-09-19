@@ -28,5 +28,6 @@ struct MyStyledSecureField: View {
                         .stroke(Color("Border"),lineWidth: 1)
                 )
         }
+        .ignoresSafeArea(.keyboard, edges: .all)
     }
 }

@@ -16,11 +16,24 @@ struct EditorPage: View {
     
     let maxPhotosToSelect = 1
     @Binding var sideMenu : Bool
-
+    @State private var isImagePickerPresented = false
+    @State var imageFromCamera : UIImage?
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
+            DrawingView()
+                .environmentObject(vm)
+                .background(
+                    GeometryReader { geometry in
+                        Color.clear
+                            .onAppear {
+                                zStackSize = geometry.size
+                            }
+                    }
+                )
+                .frame(maxHeight: .infinity)
             VStack {
+                //This HSTACK
                 HStack(spacing: 10){
                     Button {
                         sideMenu = true
@@ -34,6 +47,16 @@ struct EditorPage: View {
                     Spacer()
                     
                     if vm.images.count == 0{
+                        
+                        Button(action: {
+                            isImagePickerPresented = true
+                        }) {
+                            Image(systemName: "camera")
+                                .bold()
+                                .font(.title3)
+                                
+                        }
+                        
                         PhotosPicker(
                             selection: $vm.selectedPhotos,
                             maxSelectionCount: maxPhotosToSelect,
@@ -43,6 +66,7 @@ struct EditorPage: View {
                             
                             Image(systemName: "photo")
                                 .bold()
+                                .font(.title3)
                             
                         }
                     }
@@ -86,40 +110,40 @@ struct EditorPage: View {
                         
                     }
                 }
-                .frame(width: 343, alignment: .center)
-                Spacer()
+                .frame(maxWidth: .infinity, alignment: .center)
+                .frame(height: 55)
+                .background(
+                    Rectangle().fill(.white)
+                )
                 
-                DrawingView()
-                    .environmentObject(vm)
-                    .background(
-                        GeometryReader { geometry in
-                            Color.clear
-                                .onAppear {
-                                    zStackSize = geometry.size
-                                }
-                        }
-                    )
-                    .frame(maxHeight: .infinity)
                 Spacer()
             }
-            .frame(maxWidth: 343)
-            .padding()
-            .onChange(of: vm.selectedPhotos) { _, _ in
-                vm.convertDataToImage()
-                vm.imageIsLoading = true
-            }
-            .sheet(isPresented: $vm.addingTextBox, content: {
-                SheetToAddText()
-                    .environmentObject(vm)
-                    .presentationDetents([.fraction(1/3)])
-            })
-            .sheet(isPresented: $vm.selectingFilters, content: {
-                FiltersSheet()
-                    .environmentObject(vm)
-                    .presentationDetents([.fraction(1/4)])
-            })
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity)
+            
         }
-        .onChange(of: sideMenu, { oldValue, newValue in
+        .frame(maxWidth: .infinity)
+        .onChange(of: vm.selectedPhotos) { _, _ in
+            vm.convertDataToImage()
+            vm.imageIsLoading = true
+        }
+        .sheet(isPresented: $vm.addingTextBox, content: {
+            SheetToAddText()
+                .environmentObject(vm)
+                .presentationDetents([.fraction(2/5)])
+        })
+        .sheet(isPresented: $vm.selectingFilters, content: {
+            FiltersSheet()
+                .environmentObject(vm)
+                .presentationDetents([.fraction(1/4)])
+        })
+        .sheet(isPresented: $isImagePickerPresented) {
+            ImagePicker(selectedImage: $imageFromCamera, isPresented: $isImagePickerPresented)
+        }
+        .onChange(of: imageFromCamera, { _, _ in
+            vm.images.append(imageFromCamera!)
+        })
+        .onChange(of: sideMenu, { _, newValue in
             if newValue == true {
                 vm.hideToolPicker()
             }

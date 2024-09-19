@@ -35,6 +35,7 @@
 		9867D3BF2C9B42B900CB1C40 /* SheetToAddText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867D3BE2C9B42B900CB1C40 /* SheetToAddText.swift */; };
 		9867D3C32C9B540C00CB1C40 /* FiltersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867D3C22C9B540C00CB1C40 /* FiltersSheet.swift */; };
 		9867D3C72C9C3B4700CB1C40 /* SideBarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867D3C62C9C3B4700CB1C40 /* SideBarMenu.swift */; };
+		9867D3C92C9C84D000CB1C40 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9867D3C82C9C84D000CB1C40 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		9867D3BE2C9B42B900CB1C40 /* SheetToAddText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetToAddText.swift; sourceTree = "<group>"; };
 		9867D3C22C9B540C00CB1C40 /* FiltersSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FiltersSheet.swift; path = ../FiltersSheet.swift; sourceTree = "<group>"; };
 		9867D3C62C9C3B4700CB1C40 /* SideBarMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarMenu.swift; sourceTree = "<group>"; };
+		9867D3C82C9C84D000CB1C40 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			children = (
 				9867D3AA2C99D5B100CB1C40 /* TopViewController.swift */,
 				9867D3BA2C9B331000CB1C40 /* Snapshot.swift */,
+				9867D3C82C9C84D000CB1C40 /* ImagePicker.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				9867D38F2C9985FF00CB1C40 /* MyStyledSecureField.swift in Sources */,
 				9867D39C2C99AEB600CB1C40 /* LoadingView.swift in Sources */,
 				9867D3732C997E1300CB1C40 /* AezakmiTestApp.swift in Sources */,
+				9867D3C92C9C84D000CB1C40 /* ImagePicker.swift in Sources */,
 				9867D3982C998AE300CB1C40 /* FireBaseManager.swift in Sources */,
 				9867D38D2C9984EA00CB1C40 /* MyStyledTextField.swift in Sources */,
 				9867D3BD2C9B3CC300CB1C40 /* DrawingView.swift in Sources */,

@@ -15,6 +15,7 @@ struct NavigationView: View {
     var body: some View {
         ZStack(alignment: .leading){
             EditorPage(sideMenu: $showSideBar)
+                .frame(maxWidth: .infinity)
             if showSideBar {
                 SideBarMenu(isAuthenticated: $isAuthenticated, showSideBar: $showSideBar)
                     .frame(maxHeight: .infinity)
@@ -23,6 +24,7 @@ struct NavigationView: View {
                     .environmentObject(vm)
             }
         }
+        .frame(maxWidth: .infinity)
         .animation(.easeInOut(duration: 0.3), value: showSideBar)
         
         

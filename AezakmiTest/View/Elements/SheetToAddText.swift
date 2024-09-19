@@ -14,7 +14,7 @@ struct SheetToAddText: View {
             Color.white.ignoresSafeArea()
             VStack(alignment: .center){
                 Text("Add text")
-                    .font(.title)
+                    .font(.title2)
                 TextField("", text: $vm.editBox.text, prompt: Text("Add some text...").foregroundStyle(.black).font(.system(size: vm.editBox.font)))
                     .textInputAutocapitalization(.none)
                     .font(.system(size: vm.editBox.font))
